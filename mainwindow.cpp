@@ -19,5 +19,5 @@ void MainWindow::on_pushButton_clicked()
 {
     FloatingMessage* notification = new FloatingMessage();
 
-    notification->setAlertProperties(TypeMessage::Warning, "Текст уведомления", Qt::red, this);
+    notification->setAlertProperties(TypeMessage::Information, "Текст уведомления", this);
 }

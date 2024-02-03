@@ -22,12 +22,13 @@ void FloatingMessage::paintEvent(QPaintEvent *event)
     painter.drawRoundedRect(contentsRect(), 10, 10); //радиус скругления
 }
 
-void FloatingMessage::setAlertProperties(TypeMessage typeMessage, QString text, QColor progressBarColor, QWidget* parentForm)
+void FloatingMessage::setAlertProperties(TypeMessage typeMessage, QString text, QWidget* parentForm)
 {
     _parentForm = parentForm;
 
     QString title;
     QString backgroundColor;
+    QString progressBarColor;
     QIcon icon;
 
     switch (typeMessage)
@@ -35,16 +36,19 @@ void FloatingMessage::setAlertProperties(TypeMessage typeMessage, QString text, 
     case TypeMessage::Information :
         title = "Информация";
         backgroundColor = "#9bf29e";
+        progressBarColor = "#0d5901";
         icon = style()->standardIcon(QStyle::SP_MessageBoxInformation);
         break;
     case TypeMessage::Warning :
         title = "Внимание";
         backgroundColor = "#fcb786";
+        progressBarColor = "#f80";
         icon = style()->standardIcon(QStyle::SP_MessageBoxWarning);
         break;
     case TypeMessage::Error :
         title = "Ошибка";
         backgroundColor = "#ff8585";
+        progressBarColor = "#f00";
         icon = style()->standardIcon(QStyle::SP_MessageBoxCritical);
         break;
     }
@@ -52,7 +56,7 @@ void FloatingMessage::setAlertProperties(TypeMessage typeMessage, QString text, 
     titleLabel->setText(title);
     textLabel->setText(text);
     setStyleSheet(QString("background-color: %1;").arg(backgroundColor));
-    progressBar->setStyleSheet(QString("QProgressBar::chunk { background-color: %1; }").arg(progressBarColor.name()));
+    progressBar->setStyleSheet(QString("QProgressBar::chunk { background-color: %1; }").arg(progressBarColor));
     iconLabel->setPixmap(icon.pixmap(iconLabel->size()));
     showNotification();
 }

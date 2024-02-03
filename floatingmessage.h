@@ -32,7 +32,7 @@ class FloatingMessage : public QWidget {
 
 public:
     FloatingMessage();
-    void setAlertProperties(TypeMessage typeMessage, QString text, QColor progressBarColor, QWidget* parentForm = nullptr);
+    void setAlertProperties(TypeMessage typeMessage, QString text, QWidget* parentForm = nullptr);
 
 
 private:
