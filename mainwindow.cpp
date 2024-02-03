@@ -14,10 +14,8 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::on_pushButton_clicked()
 {
     FloatingMessage* notification = new FloatingMessage();
-
     notification->setAlertProperties(TypeMessage::Information, "Текст уведомления", this);
 }

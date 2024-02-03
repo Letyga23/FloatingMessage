@@ -76,7 +76,16 @@ void FloatingMessage::updateProgressBar()
 
 void FloatingMessage::setupUI()
 {
-    setFixedSize(300, 100);
+    setFixedSize(300, 80);
+
+    QFont titleFont;
+    titleFont.setFamily("Segoe UI");
+    titleFont.setPointSize(12);
+    titleFont.setBold(true);
+
+    QFont textFont;
+    textFont.setFamily("Segoe UI");
+    textFont.setPointSize(10);
 
     QGridLayout* mainLayout = new QGridLayout(this);
 
@@ -84,18 +93,21 @@ void FloatingMessage::setupUI()
     iconLabel->setFixedSize(32, 32);
 
     titleLabel = new QLabel(this);
+    titleLabel->setFont(titleFont);
+
     textLabel = new QLabel(this);
+    textLabel->setWordWrap(true);
+    textLabel->setFont(textFont);
+
+    int time = 1500;
     progressBar = new QProgressBar(this);
     progressBar->setTextVisible(false);
+    progressBar->setRange(0, time);
 
     mainLayout->addWidget(iconLabel, 1, 0, 2, 1);
     mainLayout->addWidget(titleLabel, 1, 1);
     mainLayout->addWidget(textLabel, 2, 1);
     mainLayout->addWidget(progressBar, 3, 0, 1, 2);
-
-    int time = 1500;
-
-    progressBar->setRange(0, time);
 }
 
 void FloatingMessage::setupConnections()
